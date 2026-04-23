@@ -433,7 +433,7 @@ $p_{k+1} - p_k = 2\Delta y(x_{k+1} - x_k) - 2\Delta x(y_{k+1} - y_k)$
 
 Since we always increment x by 1 ($x_{k+1} = x_k + 1$), the term $(x_{k+1} - x_k)$ is simply 1. This simplifies our equation to:
 $p_{k+1} = p_k + 2\Delta y - 2\Delta x(y_{k+1} - y_k)$  
-*(Note: $(y_{k+1} - y_k)$ will either be 0 or 1, depending on whether we chose the lower or upper pixel in the previous step).*
+Note: $(y_{k+1} - y_k)$ will either be 0 or 1, depending on whether we chose the lower or upper pixel in the previous step
 
 **6. Calculating the Initial Decision Parameter ($p_0$)**  
 To start the algorithm, we need the very first decision parameter evaluated at the starting endpoint $(x_0, y_0)$. Substituting $(x_0, y_0)$ into our earlier equation and applying the line equation $b = y_0 - m \cdot x_0$, it simplifies entirely down to:  
