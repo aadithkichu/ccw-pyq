@@ -422,7 +422,7 @@ Since the slope $m = \Delta y / \Delta x$, we can substitute $m$ in our equation
 $p_k = \Delta x (d_1 - d_2)$  
 $p_k = \Delta x [2(\Delta y / \Delta x)(x_k + 1) - 2y_k + 2b - 1]$  
 $p_k = 2\Delta y(x_k) - 2\Delta x(y_k) + c$  
-(Where $c$ is a constant equal to $2\Delta y + \Delta x(2b - 1)$)
+Where $c$ is a constant equal to $2\Delta y + \Delta x(2b - 1)$
 
 **5. Finding the Next Decision Parameter ($p_{k+1}$)**  
 To find the parameter for the next step, we evaluate the equation at $k + 1$:  
