@@ -380,12 +380,20 @@ $$z_{i,j}=\sqrt{(y_{i,j}-y_{i+1,j+1})^{2}+(y_{i+1,j}-y_{i,j+1})^{2}}$$
 * **Mechanism:** This operation is typically performed by averaging the pixel values within a mask, which can be either weighted or non-weighted.
 
 **Non-weighted Average Filter:** A standard 3x3 low pass (smoothing) mask consists of equal weights distributed across the neighborhood:
-$$H = \frac{1}{9}\begin{pmatrix}1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1\end{pmatrix}$$
+
+```math
+H = \frac{1}{9}\begin{pmatrix}1 & 1 & 1\\ 1 & 1 & 1\\ 1 & 1 & 1\end{pmatrix}
+```
 
 **Weighted Average Filters:** Weighted 3x3 masks place higher mathematical importance on the center pixel and its closest neighbors:
-$$H = \frac{1}{10}\begin{pmatrix}1 & 1 & 1\\ 1 & 2 & 1\\ 1 & 1 & 1\end{pmatrix}$$
 
-$$H = \frac{1}{16}\begin{pmatrix}1 & 2 & 1\\ 2 & 4 & 2\\ 1 & 2 & 1\end{pmatrix}$$
+```math
+H = \frac{1}{10}\begin{pmatrix}1 & 1 & 1\\ 1 & 2 & 1\\ 1 & 1 & 1\end{pmatrix}
+```
+
+```math
+H = \frac{1}{16}\begin{pmatrix}1 & 2 & 1\\ 2 & 4 & 2\\ 1 & 2 & 1\end{pmatrix}
+```
 
 ---
 
@@ -396,7 +404,14 @@ $$H = \frac{1}{16}\begin{pmatrix}1 & 2 & 1\\ 2 & 4 & 2\\ 1 & 2 & 1\end{pmatrix}$
     * $\text{High pass} = \text{Original} - \text{Low pass}$ 
 
 **Standard Mask:** A standard 3x3 high pass filtering mask uses a positive center weight surrounded by negative weights:
-$$\begin{pmatrix}-1/9 & -1/9 & -1/9\\ -1/9 & 8/9 & -1/9\\ -1/9 & -1/9 & -1/9\end{pmatrix}$$
+
+```math
+\begin{bmatrix}
+-1/9 & -1/9 & -1/9 \\
+-1/9 & 8/9 & -1/9 \\
+-1/9 & -1/9 & -1/9
+\end{bmatrix}
+```
 
 **High Boost Filtering:** By multiplying the original image by an amplification factor ($A$), you yield a high boost or high frequency-emphasis filter. The derivations are:
 * $\text{Highboost} = A(\text{Original}) - \text{Lowpass}$ 
@@ -507,7 +522,13 @@ The Laplacian is a linear spatial filter implemented using the convolution proce
 $$\nabla^{2}f=\frac{\partial^{2}f}{\partial x^{2}}+\frac{\partial^{2}f}{\partial y^{2}}$$
 
 * **Mask Implementation:** This equation is commonly implemented using the following $3\times3$ mask:
-$$[\begin{matrix}-1&-1&-1\\ -1&8&-1\\ -1&-1&-1\end{matrix}]$$
+```math
+\begin{bmatrix}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{bmatrix}
+```
 
 * **Visual Output:** Applying this operation produces a Laplacian image with grayish edge lines and discontinuities superimposed on a dark, featureless background.
 * **Image Recovery:** Background features can be recovered while maintaining the sharpening effect by adding the original image to the Laplacian image:
@@ -646,18 +667,32 @@ The most common method for detecting these discontinuities is scanning a small m
 Point detection uses a specific mask and evaluates it against a nonnegative threshold, denoted as $T$. The condition for a point is defined as $|R| \ge T$.
 
 * **Point Detection Mask:** Center is weighted at 8, with all surrounding pixels weighted at -1.
-$$\begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}$$
+```math
+\begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
+```
 
 **Line Detection**
 Line detection looks for a one-pixel-wide line in an image and is slightly more common than point detection. For digital images, straight lines spanning three points can only be horizontal, vertical, or diagonal ($+45^\circ$ or $-45^\circ$).
 
-* **Horizontal Mask:** $$\begin{bmatrix} -1 & -1 & -1 \\ 2 & 2 & 2 \\ -1 & -1 & -1 \end{bmatrix}$$
+* **Horizontal Mask:** 
+```math
+\begin{bmatrix} -1 & -1 & -1 \\ 2 & 2 & 2 \\ -1 & -1 & -1 \end{bmatrix}
+```
 
-* **Vertical Mask:** $$\begin{bmatrix} -1 & 2 & -1 \\ -1 & 2 & -1 \\ -1 & 2 & -1 \end{bmatrix}$$
+* **Vertical Mask:** 
+```math
+\begin{bmatrix} -1 & 2 & -1 \\ -1 & 2 & -1 \\ -1 & 2 & -1 \end{bmatrix}
+```
 
-* **$+45^\circ$ Diagonal Mask:** $$\begin{bmatrix} -1 & -1 & 2 \\ -1 & 2 & -1 \\ 2 & -1 & -1 \end{bmatrix}$$
+* **$+45^\circ$ Diagonal Mask:** 
+```math
+\begin{bmatrix} -1 & -1 & 2 \\ -1 & 2 & -1 \\ 2 & -1 & -1 \end{bmatrix}
+```
 
-* **$-45^\circ$ Diagonal Mask:** $$\begin{bmatrix} 2 & -1 & -1 \\ -1 & 2 & -1 \\ -1 & -1 & 2 \end{bmatrix}$$
+* **$-45^\circ$ Diagonal Mask:** 
+```math
+\begin{bmatrix} 2 & -1 & -1 \\ -1 & 2 & -1 \\ -1 & -1 & 2 \end{bmatrix}
+```
 
 ---
 
@@ -669,18 +704,33 @@ The gradient image can be approximated using the components in the x and y direc
 
 **Common Gradient Operators (Masks)**
 
-**1. Roberts Operator:** $$\begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$$
+**1. Roberts Operator:** 
+```math
+\begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+```
 
-**2. Prewitt Operator:** $$\begin{bmatrix} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1 \end{bmatrix}$$
+**2. Prewitt Operator:** 
+```math
+\begin{bmatrix} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1 \end{bmatrix}
+```
 
-**3. Sobel Operator:** $$\begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}$$
+**3. Sobel Operator:** 
+```math
+\begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}
+```
 
 **Masks for Detecting Diagonal Edges**
 Both Prewitt and Sobel have specific variations for detecting diagonal edges.
 
-* **Prewitt Diagonal Masks:** $$\begin{bmatrix} 0 & 1 & 1 \\ -1 & 0 & 1 \\ -1 & -1 & 0 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & -1 & 0 \\ -1 & 0 & 1 \\ 0 & 1 & 1 \end{bmatrix}$$
+* **Prewitt Diagonal Masks:** 
+```math
+\begin{bmatrix} 0 & 1 & 1 \\ -1 & 0 & 1 \\ -1 & -1 & 0 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -1 & -1 & 0 \\ -1 & 0 & 1 \\ 0 & 1 & 1 \end{bmatrix}
+```
 
-* **Sobel Diagonal Masks:** $$\begin{bmatrix} 0 & 1 & 2 \\ -1 & 0 & 1 \\ -2 & -1 & 0 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -2 & -1 & 0 \\ -1 & 0 & 1 \\ 0 & 1 & 2 \end{bmatrix}$$
+* **Sobel Diagonal Masks:** 
+```math
+\begin{bmatrix} 0 & 1 & 2 \\ -1 & 0 & 1 \\ -2 & -1 & 0 \end{bmatrix} \quad \text{and} \quad \begin{bmatrix} -2 & -1 & 0 \\ -1 & 0 & 1 \\ 0 & 1 & 2 \end{bmatrix}
+```
 
 
 ## College Notes: Image Segmentation Techniques
