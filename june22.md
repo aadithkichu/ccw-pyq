@@ -336,21 +336,8 @@ d) 2 Kbits
 
 ---
 
-**22. Match the following:**
-(a) Immediate address mode $\rightarrow$ (1) Local variables
-(b) Direct address mode $\rightarrow$ (2) Relocatable programs
-(c) Indirect address mode $\rightarrow$ (3) Pointer
-(d) Index addressing mode $\rightarrow$ (4) Locality of reference
-(e) Base address mode $\rightarrow$ (5) Arrays
-(f) Relative address mode $\rightarrow$ (6) Constant Operands
+![](Screenshot_20260509_125646_Drive.jpg)
 
-a) a6 b1 c3 d5 e2 f4
-
-b) a5 b4 c6 d3 e1 f2
-
-c) a3 b5 c2 d4 e1 f2
-
-d) a6 b5 c2 d3 e1 f4
 
 **Correct Answer:** a) a6 b1 c3 d5 e2 f4
 
