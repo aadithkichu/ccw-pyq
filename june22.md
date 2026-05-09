@@ -565,10 +565,38 @@ d) Find the names of all suppliers who have not supplied only blue parts.
 
 **Correct Answer:** a) Find the names of all suppliers who have supplied a non-blue part.
 
-**Explanation:** *Note: This question contains a known logical flaw as printed.* The official exam answer key expects (a). However, the SQL query provided has a typo. As literally written, the inner query finds non-blue parts, the middle query (`NOT IN`) selects suppliers who supply blue parts, and the outer query (`NOT IN`) excludes those suppliers—ultimately resulting in suppliers who do not supply any blue parts. For the query to mathematically match option (a), the middle clause should have been written using `IN` instead of `NOT IN`. Since this is a direct copy of a notoriously flawed legacy question (GATE 2009), option (a) is the expected answer for grading purposes, even though the SQL logic itself is broken.
+**Explanation:** *Note: This question contains a known logical flaw as printed.* The official exam answer key expects (a). However, the SQL query provided has a typo. As literally written, the inner query finds non-blue parts, the middle query (`NOT IN`) selects suppliers who supply blue parts, and the outer query (`NOT IN`) excludes those suppliers—ultimately resulting in **suppliers who do not supply any blue parts**. For the query to mathematically match option (a), the middle clause should have been written using `IN` instead of `NOT IN`. Since this is a direct copy of a notoriously flawed legacy question (GATE 2009), option (a) is the expected answer for grading purposes, even though the SQL logic itself is broken.  
+
+### The Scenario: Three Different Suppliers
+Imagine our database has three suppliers with the following inventory:
+
+| Supplier Name | Parts Supplied |
+| :--- | :--- |
+| **Raj** | 🔴 Red Part, 🔵 Blue Part |
+| **Sam** | 🔴 Red Part (Only) |
+| **Tom** | 🔵 Blue Part (Only) |
+
+
+
+### Statement A: "Suppliers who have supplied a non-blue part"
+* **The Logic:** We just need to check if a red, green, or yellow part exists in their catalog. It doesn't matter what else they sell.
+* **Who matches?** * **Raj:** Yes (He supplies a Red part).
+    * **Sam:** Yes (He supplies a Red part).
+* **Result:** Raj, Sam.
+
+### Statement B: "Suppliers who do not supply any blue parts"
+* **The Logic:** Blue is strictly forbidden. If blue exists anywhere in their catalog, they are instantly disqualified.
+* **Who matches?** * **Raj:** NO (He is disqualified because he sells a Blue part).
+    * **Sam:** Yes (He only sells Red).
+    * **Result:** Sam only.
+
+
+
+**The Conclusion:** Because Raj appears in Statement A but is disqualified in Statement B, the two statements are logically completely different. The flawed SQL query essentially calculates Statement B, while the answer key claims it calculates Statement A.
 
 
 ---
+
 
 **37. An entity in A is associated with at most one entity in B. An entity in B, however, can be associated with any number (zero or more) of entities in A.**
 
