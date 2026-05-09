@@ -529,12 +529,12 @@ d) None
 
 ---
 
-**35. Given the following relation instance.
-x y z
-1 4 2
-1 5 3
-1 6 3
-3 2 2
+**35. Given the following relation instance.  
+x y z  
+1 4 2  
+1 5 3  
+1 6 3  
+3 2 2  
 Which of the following functional dependencies are satisfied by the instance?**
 
 a) $XY \rightarrow Z$ and $Z \rightarrow Y$
