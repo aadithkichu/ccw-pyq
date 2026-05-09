@@ -90,7 +90,7 @@ c) $ab+c~Xd-e^{\wedge}f^{\wedge}$
 
 d) -+aXbc^ ^def
 
-**Correct Answer:** b) abc $X+de^{\wedge}f^{\wedge}-$
+**Correct Answer:** a) abc X+ def ^^ -
 
 **Explanation:** Due to the right-associativity of the exponential operator ^, the sub-expression $e^{\wedge}f$ is evaluated first, followed by $d^{\wedge}(e^{\wedge}f)$. The multiplication X is evaluated next, followed by addition and then subtraction, resulting in this specific postfix form.
 
