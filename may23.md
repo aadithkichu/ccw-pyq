@@ -146,13 +146,14 @@ d) Level order
 
 **10. How is the 2nd element in an array accessed based on pointer notation?**
 
-a) $*a+2$
+a) $\ast a + 2$  
 
-b) $*(^{*}a+2)$
+b) $\ast (\ast a + 2)$  
 
-c) $\&(a+2)$
+c) \& $(a + 2)$  
 
-d) $*(a+2)$
+d) $\ast (a + 2)$  
+
 
 **Correct Answer:** d) $*(a+2)$
 
