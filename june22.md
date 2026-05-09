@@ -80,7 +80,7 @@ d) Stack
 
 ---
 
-**6. Assume that the operators +, -, X are left associative and ^ is right associative. The order of precedence (from highest to lowest) is ^, X, +, -. The postfix expression for the infix expression $a+b~X~c-d\wedge e^{\wedge}f$ is?**
+**6. Assume that the operators +, -, X are left associative and ^ is right associative. The order of precedence (from highest to lowest) is ^, X, +, -. The postfix expression for the infix expression $a+b\ X\ c-d^{\wedge}e^{\wedge}f$ is?**
 
 a) abc X+ def ^^ -
 
