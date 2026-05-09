@@ -551,9 +551,9 @@ d) $XZ \rightarrow Y$ and $Y \rightarrow X$
 
 ---
 
-**36. Consider a relational schema with Suppliers, Parts, and Catalog. Consider a query:
-`SELECT S.sname FROM Suppliers S WHERE S.sid NOT IN (SELECT C.sid FROM Catalog C WHERE C.pid IN (SELECT P.pid FROM Parts P WHERE P.color <> 'blue'))`
-Which one of the following is the correct interpretation of the above query**
+**36. Consider a relational schema with Suppliers, Parts, and Catalog. Consider a query:**
+`SELECT S.sname FROM Suppliers S WHERE S.sid NOT IN (SELECT C.sid FROM Catalog C WHERE C.pid NOT IN (SELECT P.pid FROM Parts P WHERE P.color <> 'blue'))`
+**Which one of the following is the correct interpretation of the above query**
 
 a) Find the names of all suppliers who have supplied a non-blue part.
 
@@ -563,9 +563,10 @@ c) Find the names of all suppliers who have supplied only blue parts.
 
 d) Find the names of all suppliers who have not supplied only blue parts.
 
-**Correct Answer:** b) Find the names of all suppliers who have not supplied a non-blue part.
+**Correct Answer:** a) Find the names of all suppliers who have supplied a non-blue part.
 
-**Explanation:** The innermost query pulls IDs for parts that are NOT blue. The middle query pulls the supplier IDs of those who supply those non-blue parts. The outermost query excludes those suppliers. What remains are the suppliers who exclusively supply blue parts, which mathematically means they have *not* supplied a non-blue part.
+**Explanation:** *Note: This question contains a known logical flaw as printed.* The official exam answer key expects (a). However, the SQL query provided has a typo. As literally written, the inner query finds non-blue parts, the middle query (`NOT IN`) selects suppliers who supply blue parts, and the outer query (`NOT IN`) excludes those suppliers—ultimately resulting in suppliers who do not supply any blue parts. For the query to mathematically match option (a), the middle clause should have been written using `IN` instead of `NOT IN`. Since this is a direct copy of a notoriously flawed legacy question (GATE 2009), option (a) is the expected answer for grading purposes, even though the SQL logic itself is broken.
+
 
 ---
 
