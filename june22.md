@@ -393,19 +393,7 @@ d) after data address calculation has completed
 
 ---
 
-**26. The correct matching for the following pairs is:**
-(A) DMA I/O $\rightarrow$ (1) High speed RAM
-(B) Cache $\rightarrow$ (2) Disk
-(C) Interrupt I/O $\rightarrow$ (3) Printer
-(D) Condition Code Register $\rightarrow$ (4) ALU
-
-a) A4B3C1D2
-
-b) A2B1C3D4
-
-c) A4B3C2D1
-
-d) A2B3C4D1
+![](Screenshot_20260509_131651_Drive.jpg)
 
 **Correct Answer:** b) A2B1C3D4
 
