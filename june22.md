@@ -552,7 +552,7 @@ d) $XZ \rightarrow Y$ and $Y \rightarrow X$
 ---
 
 **36. Consider a relational schema with Suppliers, Parts, and Catalog. Consider a query:
-`SELECT S.sname FROM Suppliers S WHERE S.sid NOT IN (SELECT C.sid FROM Catalog C WHERE C.pid NOT IN (SELECT P.pid FROM Parts P WHERE P.color <> 'blue'))`
+`SELECT S.sname FROM Suppliers S WHERE S.sid NOT IN (SELECT C.sid FROM Catalog C WHERE C.pid IN (SELECT P.pid FROM Parts P WHERE P.color <> 'blue'))`
 Which one of the following is the correct interpretation of the above query**
 
 a) Find the names of all suppliers who have supplied a non-blue part.
