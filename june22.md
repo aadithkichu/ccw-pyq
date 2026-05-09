@@ -691,7 +691,7 @@ d) Cannot be said
 
 **43. Regular expression for all strings starts with ab and ends with bba is.**
 
-a) $aba^{*}b^{*}bba$
+a) $aba^{\ast}b^{\ast}bba$
 
 b) $ab(ab)^{*}bba$
 
